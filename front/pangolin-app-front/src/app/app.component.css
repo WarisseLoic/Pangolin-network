@@ -1,0 +1,40 @@
+.homepage {
+    height: 100vh;
+    background-image: url(https://picsum.photos/800);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.homepage h1 {
+    padding-top: 10vh;
+    text-align: center;
+    color: orange;
+    text-transform: uppercase;
+}
+
+.homepage h1:hover {
+    
+}
+
+.interface {
+    margin-top: 30vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 30px;
+}
+
+button {
+    border: none;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    height: 70px;
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+button:hover {
+    background-color:orange;
+    transition: 1s;
+    border-radius: 30%;
+    border: solid;
+}
