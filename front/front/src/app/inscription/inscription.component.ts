@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Form } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inscription',
@@ -17,8 +18,7 @@ export class InscriptionComponent implements OnInit {
 
   url = "http://localhost:4000/api/1/";
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {
-
+  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {
   }
 
   send_request_toapi = () => {
@@ -38,7 +38,9 @@ export class InscriptionComponent implements OnInit {
   inscription() {
     this.postData.name = this.loginFrom.value.username;
     this.postData.password = this.loginFrom.value.password;
-    if (this.loginFrom.value.password == this.loginFrom.value.confirm_password)
+    if (this.loginFrom.value.password == this.loginFrom.value.confirm_password) {
       this.send_request_toapi();
+      this.router.navigate(['/profil/' + this.loginFrom.value.username]);
+    }
   }
 }
