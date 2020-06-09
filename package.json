@@ -2,7 +2,7 @@
   "name": "pangolin_mean",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.17.1",

@@ -49,7 +49,17 @@ app.get(url_basic + '/id=:n_id', async (req, res) => {
     } catch (e) {
         res.json({message: e});
     }
-})
+});
+
+app.get(url_basic + '/list', async (req, res) => {
+    try {
+        schema.find({}, (err, users) => {
+            res.json(users);
+        })
+    } catch (e) {
+        res.json({message: e});
+    }
+});
 
 app.get(url_basic + '/name=:n_name', async (req, res) => {
     try {

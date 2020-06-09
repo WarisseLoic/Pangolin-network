@@ -2,7 +2,7 @@
     height: 100vh;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 20vh 20vh 20vh 20vh 20vh;
+    grid-template-rows: 20vh 20vh 20vh;
     gap: 20px;
     justify-items:center;
 }
@@ -91,4 +91,9 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
     cursor: pointer;
+}
+
+.friend_page {
+    margin: 0px;
+    padding: 0px;
 }

@@ -15,6 +15,8 @@ export class ProfilComponent implements OnInit {
   familly = '';
   loginFrom: FormGroup;
   id = '';
+  all_pan = new Array;
+  friends = new Array;
 
   urlget = "http://localhost:4000/api/1/name=";
   url = "http://localhost:4000/api/1/id=";
@@ -27,7 +29,13 @@ export class ProfilComponent implements OnInit {
       this.race = data[0].race;
       this.familly = data[0].familly;
       this.id = data[0]._id;
+      this.friends = new Array (data[0].friends);
       console.log(data[0]);
+    });
+    this.http.get("http://localhost:4000/api/1/list").toPromise().then(data => {
+      var s = new Array(data);
+      this.all_pan = s;
+      console.log(this.all_pan);
     });
   }
 
@@ -44,6 +52,26 @@ export class ProfilComponent implements OnInit {
   update_value = (vari, value) => {
       this.http.put(this.url + this.id + "/" + vari + '=' + value, this.name).toPromise().then(data => {
     });
+  }
+
+  fun = (item) => {
+    console.log(this.friends);
+    if (this.friends[0].includes(item.name)) {
+      alert(item.name + " est déjà dans vos amis");
+    } else {
+      alert(item.name + " a était ajouté à vos amis");
+      this.update_value("add_friend", item.name);
+    }
+  }
+
+  delete = (item) => {
+    console.log(this.friends);
+    if (this.friends[0].includes(item.name)) {
+      alert(item.name + " a était supprimé de vos amis");
+      this.update_value("rem_friend", item.name);
+    } else {
+      alert("Loic est pas dans vos amis");
+    }
   }
 
   changedata() {
