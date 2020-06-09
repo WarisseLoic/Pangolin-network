@@ -1,3 +1,15 @@
+.close {
+    position: fixed;
+    height: 50px;
+    width: 50px;
+    margin-top: 20px;
+    margin-left: 20px;
+    background-image: url(https://lagazettedufennec.com/wp-content/uploads/2018/08/close-hi.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+}
+
 .login_page {
     width: 100%;
     height: 98vh;
@@ -7,10 +19,101 @@
     padding-top: 15vh;
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 10vh;
     gap: 20px;
+    justify-items:center;
 }
 
 .Title {
     text-align: center;
     grid-column: 2;
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    border: 1px solid var(--border);
+    border-radius: var(--borderRadius);
+    box-sizing: border-box;
+    font-size: 1rem;
+    height: 2.25rem;
+    line-height: 1.25rem;
+    margin-top: 0.25rem;
+    order: 2;
+    padding: 0.25rem 0.5rem;
+    width: 15rem;
+    transition: all 0.25s;
+}
+
+input[type="submit"] {
+    color: hsl(var(--bgColorH), var(--bgColorS), var(--bgColorL));
+    background: hsl(var(--fgColorH), var(--fgColorS), var(--fgColorL));
+    font-size: 0.75rem;
+    font-weight: bold;
+    margin-top: 0.625rem;
+    order: 4;
+    outline: 1px dashed transparent;
+    outline-offset: 2px;
+    padding-left: 0;
+    text-transform: uppercase;
+}
+
+input[type="submit"]:hover {
+    cursor: pointer;
+}
+
+form {
+    grid-column: 2;
+    --background: white;
+    --border: rgba(0, 0, 0, 0.125);
+    --borderDark: rgba(0, 0, 0, 0.25);
+    --borderDarker: rgba(0, 0, 0, 0.5);
+    --bgColorH: 0;
+    --bgColorS: 0%;
+    --bgColorL: 98%;
+    --fgColorH: 210;
+    --fgColorS: 50%;
+    --fgColorL: 38%;
+    --shadeDark: 0.3;
+    --shadeLight: 0.7;
+    --shadeNormal: 0.5;
+    --borderRadius: 0.125rem;
+    --highlight: #306090;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--borderRadius);
+    box-shadow: 0 1rem 1rem -0.75rem var(--border);
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+form div {
+    color: hsl(var(--fgColorH), var(--fgColorS), var(--fgColorL));
+    font-size: 0.825rem;
+    order: 4;
+    text-align: center;
+    margin-top: 0.25rem;
+    outline: 1px dashed transparent;
+    outline-offset: 2px;
+    display: inline;  
+}
+
+form div:hover {
+    color: hsl(var(--fgColorH), var(--fgColorS), calc(var(--fgColorL) * 0.85));
+    transition: color 0.25s;  
+}
+
+input[type=password] {
+    background-color: white;
+    color: white;
+}
+
+input[type=password]:focus {
+    background-color: orange;
 }

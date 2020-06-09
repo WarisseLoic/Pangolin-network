@@ -1,8 +1,5 @@
 .homepage {
     height: 100vh;
-    background-image: url(https://picsum.photos/800);
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
 .homepage h1 {

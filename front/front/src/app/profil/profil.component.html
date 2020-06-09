@@ -1,1 +1,24 @@
-<p>profil works!</p>
+<div class="data_page">
+    <img
+    class="profil_img"
+    src="https://medias.liberation.fr/photo/1298612-000_1os1e2.jpg?modified_at=1583667760&width=960">
+    <form class="data_reel" [formGroup]="loginFrom" (ngSubmit)="changedata()">
+        <div>
+            <label>Name</label>
+            <input formControlName="name" type="text" value={{name}} disabled="true"/>
+            <label>Password</label>
+            <input formControlName="pass" type="text" value={{password}}/>
+        </div>
+        <div>
+            <label>Age</label>
+            <input formControlName="age" type="text" value={{age}} />
+            <label>Race</label>
+            <input formControlName="race" type="text" value={{race}} />
+        </div>
+        <div>
+            <label>familly</label>
+            <input formControlName="familly" type="text" value={{familly}} />
+        </div>
+        <input type="submit" value="Valider" />
+    </form>
+</div>

@@ -20,6 +20,14 @@ mongoose.connect(
 const db = mongoose.connection;
 db.on('error', (e) => console.error(e));
 
+app.use((req, res, next) => {
+    console.log("Api call");
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', '*');
+    res.header('Access-Control-Allow-Methods', '*');
+    next();
+})
+
 app.post(url_basic + '/', async (req, res) => {
     console.log("New Request : \n" + req.body); 
     const new_data = new schema({

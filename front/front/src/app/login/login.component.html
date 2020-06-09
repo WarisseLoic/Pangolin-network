@@ -1,5 +1,19 @@
+<div class="close" [routerLink]="['']" routerLinkActive="active"></div>
 <div class="login_page">
     <div class="box_login">
-        <h1 class="Title"> Connectez vous </h1>
+        <h1 class="Title">Connexion</h1>
+        <form [formGroup]="loginFrom" (ngSubmit)="login()">
+            <div>
+                <label> Pseudo </label>
+                <input id="pseudo" class="form-control" name="username" formControlName="username" autofocus autcomplete/>
+            </div>
+            <div>
+                <label> Password </label>
+                <input type="password" class="form-control" formControlName="password" name="password" />
+            </div>
+            <div>
+                <input type="submit" class="to_submit" value="Connect">
+            </div>
+        </form>
     </div>
 </div>
