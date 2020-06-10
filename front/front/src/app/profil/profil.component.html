@@ -4,10 +4,9 @@
     src="https://medias.liberation.fr/photo/1298612-000_1os1e2.jpg?modified_at=1583667760&width=960">
     <form class="data_reel" [formGroup]="loginFrom" (ngSubmit)="changedata()">
         <div>
-            <label>Name</label>
-            <input formControlName="name" type="text" value={{name}} disabled="true"/>
+            <h1>{{name}}</h1>
             <label>Password</label>
-            <input formControlName="pass" type="text" value={{password}}/>
+            <input formControlName="pass" type="password" value={{password}}/>
         </div>
         <div>
             <label>Age</label>
@@ -22,10 +21,12 @@
         <input type="submit" value="Valider" />
     </form>
 </div>
+
 <div class="friend_page">
     <div *ngFor="let item of all_pan[0]">
+        <img src="https://randomuser.me/api/portraits/men/{{number}}.jpg"/>
         <h2>{{item.name}}</h2>
-        <button type="submit" (click)="fun(item)">Ajouter</button>
+        <button type="submit" (click)="add(item)">Ajouter</button>
         <button type="submit" (click)="delete(item)">Supprimer</button>
     </div>
 <div>

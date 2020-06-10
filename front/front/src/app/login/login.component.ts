@@ -16,9 +16,7 @@ export class LoginComponent implements OnInit {
   url = "http://localhost:4000/api/1/name=";
 
   constructor(private fb: FormBuilder, private http: HttpClient
-    , private router: Router) {
-
-  }
+    , private router: Router) {}
   
   ngOnInit(): void {
     this.loginFrom = this.fb.group({

@@ -1,20 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Form } from '@angular/forms';
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-profil',
   templateUrl: './profil.component.html',
   styleUrls: ['./profil.component.css']
 })
+
 export class ProfilComponent implements OnInit {
-  name = 'Loic';
+  name = '';
   password = '';
   age = '';
   race = '';
   familly = '';
   loginFrom: FormGroup;
   id = '';
+  number = Math.floor(Math.random() * 100);
   all_pan = new Array;
   friends = new Array;
 
@@ -22,8 +25,10 @@ export class ProfilComponent implements OnInit {
   url = "http://localhost:4000/api/1/id=";
   // :var=:value
 
-  constructor(private http: HttpClient, private fb: FormBuilder) {
+  constructor(private http: HttpClient, private fb: FormBuilder, private route: ActivatedRoute) {
+    this.name = this.route.snapshot.paramMap.get("name");
     this.http.get(this.urlget + this.name).toPromise().then(data => {
+      console.log(this.urlget + this.name);
       this.password = data[0].password;
       this.age = data[0].age;
       this.race = data[0].race;
@@ -54,7 +59,7 @@ export class ProfilComponent implements OnInit {
     });
   }
 
-  fun = (item) => {
+  add = (item) => {
     console.log(this.friends);
     if (this.friends[0].includes(item.name)) {
       alert(item.name + " est déjà dans vos amis");
@@ -62,6 +67,7 @@ export class ProfilComponent implements OnInit {
       alert(item.name + " a était ajouté à vos amis");
       this.update_value("add_friend", item.name);
     }
+    window.location.reload();
   }
 
   delete = (item) => {
@@ -70,8 +76,9 @@ export class ProfilComponent implements OnInit {
       alert(item.name + " a était supprimé de vos amis");
       this.update_value("rem_friend", item.name);
     } else {
-      alert("Loic est pas dans vos amis");
+      alert(item.name + " est pas dans vos amis");
     }
+    window.location.reload();
   }
 
   changedata() {
