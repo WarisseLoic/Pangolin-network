@@ -12,6 +12,7 @@ import { InscriptionComponent } from './inscription/inscription.component';
 import { ProfilComponent } from './profil/profil.component';
 import { OtherPangolinComponent } from './other-pangolin/other-pangolin.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AddOtherComponent } from './add-other/add-other.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -28,7 +29,8 @@ const appRoutes: Routes = [
     HomeComponent,
     InscriptionComponent,
     ProfilComponent,
-    OtherPangolinComponent
+    OtherPangolinComponent,
+    AddOtherComponent
   ],
   imports: [
     FormsModule,

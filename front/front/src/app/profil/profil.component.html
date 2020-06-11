@@ -1,10 +1,6 @@
 <div class="data_page">
-    <div class="other_pangolin">
-        <form [formGroup]="otherForm" (ngSubmit)="add_other()">
-            <label>Ajouter une personne non inscrite</label>
-            <input formControlName="who" type="text" value="" />
-            <input value="Valider" type="submit" />
-        </form>
+    <div class="add_other">
+        <app-add-other [name]="name" [id]="id"></app-add-other>
     </div>
     <img
     class="profil_img"
@@ -13,17 +9,17 @@
         <div>
             <h1>{{name}}</h1>
             <label>Password</label>
-            <input formControlName="pass" type="password" value={{password}}/>
+                <input formControlName="pass" type="password" value={{password}}/>
         </div>
         <div>
             <label>Age</label>
-            <input formControlName="age" type="text" value={{age}} />
+                <input formControlName="age" type="text" value={{age}} />
             <label>Race</label>
-            <input formControlName="race" type="text" value={{race}} />
+                <input formControlName="race" type="text" value={{race}} />
         </div>
         <div>
             <label>familly</label>
-            <input formControlName="familly" type="text" value={{familly}} />
+                <input formControlName="familly" type="text" value={{familly}} />
         </div>
         <input type="submit" value="Valider" />
     </form>

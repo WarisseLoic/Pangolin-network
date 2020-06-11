@@ -116,11 +116,6 @@ input[type="submit"]:hover {
     grid-column: 3;
 }
 
-.other_pangolin {
+.add_other {
     grid-row: 2;
-}
-
-.other_pangolin label {
-    color: var(--highlight);
-    margin-bottom: 15px;
 }

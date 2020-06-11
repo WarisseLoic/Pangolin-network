@@ -17,14 +17,10 @@ export class ProfilComponent implements OnInit {
   race = '';
   familly = '';
   loginFrom: FormGroup;
-  otherForm: FormGroup;
   id = '';
   all_pan = new Array;
   friends = [];
-  postData = {
-    name: 'here',
-    password: 'none',
-  };
+
   otherurl = "http://localhost:4000/api/1/";
 
   urlget = "http://localhost:4000/api/1/name=";
@@ -57,9 +53,6 @@ export class ProfilComponent implements OnInit {
       age: [],
       race: [],
       familly: [],
-    });
-    this.otherForm = this.fb.group({
-      who: [],
     });
   }
 
@@ -107,20 +100,5 @@ export class ProfilComponent implements OnInit {
     if (this.loginFrom.value.pass != this.password && this.loginFrom.value.pass != undefined) {
       this.update_value("password", this.loginFrom.value.password);
     }
-  }
-
-  send_request_toapi = () => {
-    this.http.post(this.otherurl, this.postData).toPromise().then(data => {
-      console.log(data);
-    });
-  }
-
-  add_other = () => {
-    this.postData.name = this.otherForm.value.who;
-    if (this.otherForm.value.password == this.otherForm.value.confirm_password) {
-      this.send_request_toapi();
-      window.location.reload();
-    }
-    this.update_value("add_friend", this.otherForm.value.who);
   }
 }
