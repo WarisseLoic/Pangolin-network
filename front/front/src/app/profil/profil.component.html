@@ -1,4 +1,11 @@
 <div class="data_page">
+    <div class="other_pangolin">
+        <form [formGroup]="otherForm" (ngSubmit)="add_other()">
+            <label>Ajouter une personne non inscrite</label>
+            <input formControlName="who" type="text" value="" />
+            <input value="Valider" type="submit" />
+        </form>
+    </div>
     <img
     class="profil_img"
     src="https://medias.liberation.fr/photo/1298612-000_1os1e2.jpg?modified_at=1583667760&width=960">
@@ -20,11 +27,14 @@
         </div>
         <input type="submit" value="Valider" />
     </form>
+    <div class="array_friends" *ngFor="let item of friends[0]">
+        <h2 class="item"> {{ item }}</h2>
+    </div>
 </div>
 
 <div class="friend_page">
     <div *ngFor="let item of all_pan[0]">
-        <img src="https://randomuser.me/api/portraits/men/{{number}}.jpg"/>
+        <img style="border-radius: 50%;" src="https://randomuser.me/api/portraits/men/{{number_random()}}.jpg"/>
         <h2>{{item.name}}</h2>
         <button type="submit" (click)="add(item)">Ajouter</button>
         <button type="submit" (click)="delete(item)">Supprimer</button>

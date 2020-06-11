@@ -96,6 +96,31 @@ input[type="submit"]:hover {
 }
 
 .friend_page {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.friend_page div {
     margin: 0px;
     padding: 0px;
+    margin-right: 20px;
+    display: inline-block;
+}
+
+.friend_page div button{
+    margin-right: 3px;
+}
+
+.array_friends {
+    flex-direction: column;
+    grid-column: 3;
+}
+
+.other_pangolin {
+    grid-row: 2;
+}
+
+.other_pangolin label {
+    color: var(--highlight);
+    margin-bottom: 15px;
 }

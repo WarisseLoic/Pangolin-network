@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Form } from '@angular/forms';
 import { ActivatedRoute } from "@angular/router";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profil',
@@ -16,31 +17,36 @@ export class ProfilComponent implements OnInit {
   race = '';
   familly = '';
   loginFrom: FormGroup;
+  otherForm: FormGroup;
   id = '';
-  number = Math.floor(Math.random() * 100);
   all_pan = new Array;
-  friends = new Array;
+  friends = [];
+  postData = {
+    name: 'here',
+    password: 'none',
+  };
+  otherurl = "http://localhost:4000/api/1/";
 
   urlget = "http://localhost:4000/api/1/name=";
   url = "http://localhost:4000/api/1/id=";
-  // :var=:value
 
-  constructor(private http: HttpClient, private fb: FormBuilder, private route: ActivatedRoute) {
+  constructor(private http: HttpClient, private fb: FormBuilder, private route: ActivatedRoute,
+    private router: Router) {
     this.name = this.route.snapshot.paramMap.get("name");
     this.http.get(this.urlget + this.name).toPromise().then(data => {
-      console.log(this.urlget + this.name);
       this.password = data[0].password;
       this.age = data[0].age;
       this.race = data[0].race;
       this.familly = data[0].familly;
       this.id = data[0]._id;
       this.friends = new Array (data[0].friends);
-      console.log(data[0]);
     });
     this.http.get("http://localhost:4000/api/1/list").toPromise().then(data => {
-      var s = new Array(data);
-      this.all_pan = s;
-      console.log(this.all_pan);
+      this.all_pan = new Array (data);
+      for (let i = 0; i <= this.all_pan.length; i++) {
+        if (this.all_pan[0][i].name === this.name)
+          this.all_pan[0].splice(i, 1);
+      }
     });
   }
 
@@ -51,6 +57,9 @@ export class ProfilComponent implements OnInit {
       age: [],
       race: [],
       familly: [],
+    });
+    this.otherForm = this.fb.group({
+      who: [],
     });
   }
 
@@ -81,6 +90,10 @@ export class ProfilComponent implements OnInit {
     window.location.reload();
   }
 
+  number_random = () => {
+    return (Math.floor(Math.random() * 100));
+  }
+
   changedata() {
     if (this.loginFrom.value.age != this.age && this.loginFrom.value.age != undefined) {
       this.update_value("age", this.loginFrom.value.age);
@@ -94,5 +107,20 @@ export class ProfilComponent implements OnInit {
     if (this.loginFrom.value.pass != this.password && this.loginFrom.value.pass != undefined) {
       this.update_value("password", this.loginFrom.value.password);
     }
+  }
+
+  send_request_toapi = () => {
+    this.http.post(this.otherurl, this.postData).toPromise().then(data => {
+      console.log(data);
+    });
+  }
+
+  add_other = () => {
+    this.postData.name = this.otherForm.value.who;
+    if (this.otherForm.value.password == this.otherForm.value.confirm_password) {
+      this.send_request_toapi();
+      window.location.reload();
+    }
+    this.update_value("add_friend", this.otherForm.value.who);
   }
 }
